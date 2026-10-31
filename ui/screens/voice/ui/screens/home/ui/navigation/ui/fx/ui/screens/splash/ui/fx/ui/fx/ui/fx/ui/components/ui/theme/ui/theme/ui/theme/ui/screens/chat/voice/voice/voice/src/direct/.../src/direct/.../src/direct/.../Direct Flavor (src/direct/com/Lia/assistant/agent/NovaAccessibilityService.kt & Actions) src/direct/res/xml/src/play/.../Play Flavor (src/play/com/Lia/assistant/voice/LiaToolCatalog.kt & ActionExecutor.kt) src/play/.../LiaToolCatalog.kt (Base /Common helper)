@@ -1,0 +1,27 @@
+package com.Lia.assistant.voice
+
+import org.json.JSONArray
+import org.json.JSONObject
+
+object LiaToolCatalog {
+    fun decl(name: String, description: String, paramNames: List<String>): JSONObject {
+        return JSONObject().apply {
+            put("name", name)
+            put("description", description)
+            put("parameters", JSONObject().apply {
+                put("type", "OBJECT")
+                put("properties", JSONObject().apply {
+                    for (p in paramNames) {
+                        put(p, JSONObject().apply {
+                            put("type", "STRING")
+                            put("description", "Parameter $p")
+                        })
+                    }
+                })
+                put("required", JSONArray().apply {
+                    for (p in paramNames) put(p)
+                })
+            })
+        }
+    }
+}
