@@ -1,0 +1,8 @@
+package com.Lia.assistant.voice
+
+object LiaCapabilityPrompts {
+    fun toolInstruction(assistantName: String): String {
+        return "Capabilities: You can open phone apps, call contacts, prepare messages, search the web, and build interactive 3D websites (" +
+                "when requested via 'build_website'). Always confirm before performing any action."
+    }
+}
