@@ -18,14 +18,12 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-
-    - name: Build Direct Debug APK
-      run: ./gradlew assembleDirectDebug
+    - name: Build Direct Debug APK with Gradle
+      run: gradle assembleDirectDebug
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: maya-ai-direct-debug
         path: app/build/outputs/apk/direct/debug/app-direct-debug.apk
+
